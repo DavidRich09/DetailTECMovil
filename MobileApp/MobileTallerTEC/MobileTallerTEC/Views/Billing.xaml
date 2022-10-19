@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+       Instanciacion del content page de Billing y sus dependencias
+-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTallerTEC.Views.Billing"             
+             xmlns:model="clr-namespace:MobileTallerTEC.Models"  
+             xmlns:local="clr-namespace:MobileTallerTEC.ViewModels"
+             Title="{Binding Title}">
+
+    <!--
+       Instanciacion del contenido del RefreshVuew y sus objetos asociados
+-->
+    <RefreshView x:DataType="local:BillingViewModel" Command="{Binding LoadBillsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <!--
+                Colection view de las facuras
+            -->
+        <CollectionView x:Name="BillsListView"
+                ItemsSource="{Binding Bills}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:Bill">
+                        <!--
+                            Label titulo
+                        -->
+                        <Label
+                            Text="Detalle de factura: "
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="27">
+                        </Label>
+                        <!--
+                            Label de la licencia
+                        -->
+                        <Label
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Licencia: " />
+                                    <Span Text="{Binding licensePlate}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--
+                            Label del servicio
+                        -->
+                        <Label
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Servicio brindado: " />
+                                    <Span Text="{Binding service}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--
+                            Label del costo
+                        -->
+                        <Label
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Costo: " />
+                                    <Span Text="{Binding cost}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--
+                            Label del mecanico
+                        -->
+                        <Label
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Mecanico encargado: " />
+                                    <Span Text="{Binding mecanic}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--
+                            Label de la fecha
+                        -->
+                        <Label
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Fecha: " />
+                                    <Span Text="{Binding date}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

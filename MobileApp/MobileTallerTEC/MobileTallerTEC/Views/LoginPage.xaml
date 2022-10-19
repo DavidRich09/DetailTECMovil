@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+       Instanciacion del content page de LoginPage y sus dependencias
+-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileTallerTEC.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <!--
+       Instanciacion del contenido del content page y sus objetos asociados
+-->
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <!--
+                Label y Entry del ususario 
+            -->
+            <Label Text="Usuario" FontSize="Medium" />
+            <Entry Text="{Binding User, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing" Placeholder="Ingrese su usuario"/>
+            <!--
+                Label y Entry de la contraseña
+            -->
+            <Label Text="Contraseña" FontSize="Medium" />
+            <Entry Text="{Binding Password, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing" Placeholder="Ingrese su contraseña" IsPassword="True"/>
+            <!--
+                Botones de Inicio de sesion y registrarse
+            -->
+            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <Button VerticalOptions="Center" Text="Registrarse" Command="{Binding RegisterCommand}"/>
+            <!--
+               Label de success 
+            -->
+            <Label Text="{Binding Error, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+       Instanciacion del content page de Registration y sus dependencias
+-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTallerTEC.Views.Registration"             
+             Title="{Binding Title}">
+    <!--
+       Instanciacion del contenido del content page y sus objetos asociados
+-->
+    <ContentPage.Content>
+        <StackLayout>
+            <!--
+                Label y Entry de la placa 
+            -->
+            <Label Text="Placa del vehículo" FontSize="Medium"/>
+            <Entry Text="{Binding License_plate, Mode=TwoWay}" FontSize="Medium" MaxLength="7" ClearButtonVisibility="WhileEditing"
+                   TextTransform="Uppercase"/>
+            <!--
+                Label y Picker de la sucursal 
+            -->
+            <Label Text="Sucursal" FontSize="Medium" />
+            <Picker x:Name="picker"
+                Title="Seleccione una sucursal"
+                TitleColor="Black"
+                SelectedItem="{Binding Office, Mode=TwoWay}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Sucursal Cartago Centro</x:String>
+                        <x:String>Oreamuno de Cartago</x:String>
+                        <x:String>Pinares Curridabat</x:String>
+                        <x:String>Rio Oro Santa Ana</x:String>
+                        <x:String>Ciudad de Panamá</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <!--
+                Label y Picker del servicio 
+            -->
+            <Label Text="Servicio" FontSize="Medium" />
+            <Picker x:Name="picker2"
+                Title="Seleccione un Servicio"
+                TitleColor="Black"
+                SelectedItem="{Binding Service, Mode=TwoWay}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Cambio de aceite</x:String>
+                        <x:String>Cambio de llantas</x:String>
+                        <x:String>Alineado y tramado</x:String>
+                        <x:String>Revision 5k km</x:String>
+                        <x:String>Revision 10k km</x:String>
+                        <x:String>Revision 15k km</x:String>
+                        <x:String>Revision 20k km</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <!--
+                Label y DatePicker de la fecha 
+            -->
+            <Label Text="Fecha de la cita" FontSize="Medium" />
+            <DatePicker MinimumDate = "{Binding Today}" MaximumDate="12/31/2023" Date="{Binding Date, Mode=TwoWay}"  Format="dd-MM-yyy"/>
+            <!--
+                Boton de registro y label de success 
+            -->
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Registrar Cita" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+            <Label Text="{Binding Error, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

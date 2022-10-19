@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+       Instanciacion del content page de Registrer y sus dependencias
+-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTallerTEC.Views.Register"             
+             Title="{Binding Title}">
+    <!--
+       Instanciacion del contenido del content page y sus objetos asociados
+-->
+    <ContentPage.Content>
+        <StackLayout>
+            <!--
+                Label y Entry de la cedula 
+            -->
+            <Label Text="Cédula" FontSize="Medium"/>
+            <Entry Text="{Binding Id, Mode=TwoWay}" FontSize="Medium" MaxLength="9" ClearButtonVisibility="WhileEditing" 
+                   Keyboard="Numeric"/>
+            <!--
+                Label y Entry del nombre
+            -->
+            <Label Text="Nombre completo" FontSize="Medium" />
+            <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing"/>
+            <!--
+                Label y Entry del user 
+            -->
+            <Label Text="User" FontSize="Medium" />
+            <Entry Text="{Binding User, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing"/>
+            <!--
+                Label y Entry del email 
+            -->
+            <Label Text="Email" FontSize="Medium" />
+            <Entry Text="{Binding Email, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                   Keyboard="Email"/>
+            <!--
+                Label y Entry de la contrasena 
+            -->
+            <Label Text="Contraseña" FontSize="Medium" />
+            <Entry Text="{Binding Password, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                   IsPassword="True"/>
+            <!--
+                Boton de registro y label de success 
+            -->
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Registrarse" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+            <Label Text="{Binding Error, Mode=TwoWay}" FontSize="Medium" HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
