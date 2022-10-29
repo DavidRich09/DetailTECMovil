@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+       Instanciacion del content page de Billing y sus dependencias
+-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTallerTEC.Views.Points"             
+             xmlns:model="clr-namespace:MobileTallerTEC.Models"  
+             xmlns:local="clr-namespace:MobileTallerTEC.ViewModels"
+             Title="{Binding Title}">
+
+    <!--
+       Instanciacion del contenido del RefreshVuew y sus objetos asociados
+-->
+    <RefreshView x:DataType="local:PointsViewModel" Command="{Binding LoadBillsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <StackLayout Padding="10,0,10,0">
+            <Label
+                Text="Información de sus puntos: "
+                LineBreakMode="NoWrap" 
+                Style="{DynamicResource ListItemTextStyle}" 
+                FontSize="27">
+            </Label>
+            <Label
+                LineBreakMode="NoWrap" 
+                Style="{DynamicResource ListItemTextStyle}" 
+                FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Cantidad de puntos: " />
+                        <Span Text="{Binding CantPoints}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label
+                LineBreakMode="NoWrap" 
+                Style="{DynamicResource ListItemTextStyle}" 
+                FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Cantidad de puntos redimidos: " />
+                        <Span Text="{Binding CantPointsRed}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label
+                LineBreakMode="NoWrap" 
+                Style="{DynamicResource ListItemTextStyle}" 
+                FontSize="16">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Cantidad de puntos redimidos: " />
+                        <Span Text="{Binding CantPointsAviable}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </RefreshView>
+</ContentPage>

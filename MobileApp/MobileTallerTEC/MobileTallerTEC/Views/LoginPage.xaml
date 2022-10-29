@@ -17,8 +17,8 @@
             <!--
                 Label y Entry del ususario 
             -->
-            <Label Text="Usuario" FontSize="Medium" />
-            <Entry Text="{Binding User, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing" Placeholder="Ingrese su usuario"/>
+            <Label Text="Cédula" FontSize="Medium" />
+            <Entry Text="{Binding User, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing" Placeholder="Ingrese su cédula"/>
             <!--
                 Label y Entry de la contraseña
             -->

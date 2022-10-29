@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj": {}
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj",
         "projectName": "MobileTallerTEC.Android",
-        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\MobileTallerTEC.Android.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid12.0": {
             "projectReferences": {
-              "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj": {
-                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj"
+              "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj": {
+                "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj"
               }
             }
           }
@@ -54,14 +54,14 @@
         }
       }
     },
-    "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj": {
+    "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj",
         "projectName": "MobileTallerTEC",
-        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\MobileTallerTEC.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\TallerTECMobile\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\DetailTECMovil\\MobileApp\\MobileTallerTEC\\MobileTallerTEC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -72,7 +72,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -80,8 +80,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
-            "targetAlias": "netstandard2.0",
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
             "projectReferences": {}
           }
         },
@@ -92,8 +92,8 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
-          "targetAlias": "netstandard2.0",
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "dependencies": {
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
@@ -102,12 +102,6 @@
             "Microsoft.Extensions.Http": {
               "target": "Package",
               "version": "[6.0.0, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -124,6 +118,10 @@
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2196, )"
+            },
+            "sqlite-net-pcl": {
+              "target": "Package",
+              "version": "[1.8.116, )"
             }
           },
           "imports": [
@@ -137,6 +135,11 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }

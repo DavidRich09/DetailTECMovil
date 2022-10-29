@@ -4,12 +4,13 @@
 -->
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileTallerTEC.Views.Register"             
+             x:Class="MobileTallerTEC.Views.Register"
+             xmlns:behaviors="clr-namespace:MobileTallerTEC.Behaviors;assembly=MobileTallerTEC"
              Title="{Binding Title}">
     <!--
        Instanciacion del contenido del content page y sus objetos asociados
 -->
-    <ContentPage.Content>
+    <ScrollView>
         <StackLayout>
             <!--
                 Label y Entry de la cedula 
@@ -23,9 +24,25 @@
             <Label Text="Nombre completo" FontSize="Medium" />
             <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing"/>
             <!--
+                Label y Entry de los telefonos
+            -->
+            <Label Text="Telefono" FontSize="Medium" />
+            <Entry x:Name="Phones" Text="{Binding Phone, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing" Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <behaviors:MaskedBehavior Mask="XXXXXXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="{Binding Phones, Mode=TwoWay}" FontSize="Medium" />
+            <!--
+                Label y Entry de las direcciones
+            -->
+            <Label Text="Direccion" FontSize="Medium" />
+            <Entry x:Name ="Addresses"  Text="{Binding Address, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing"/>
+            <Label Text="{Binding Addresses, Mode=TwoWay}" FontSize="Medium" />
+            <!--
                 Label y Entry del user 
             -->
-            <Label Text="User" FontSize="Medium" />
+            <Label Text="Usuario" FontSize="Medium" />
             <Entry Text="{Binding User, Mode=TwoWay}" FontSize="Medium" ClearButtonVisibility="WhileEditing"/>
             <!--
                 Label y Entry del email 
@@ -47,5 +64,5 @@
             </StackLayout>
             <Label Text="{Binding Error, Mode=TwoWay}" FontSize="Medium" HorizontalOptions="Center" />
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

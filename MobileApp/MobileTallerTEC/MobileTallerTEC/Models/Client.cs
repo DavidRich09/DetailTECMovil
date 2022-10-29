@@ -21,54 +21,18 @@ namespace MobileTallerTEC.Models
         •	Phone: Teléfonos del cliente
 
          */
-        public string Id { get; set; }
-        
-        public string Name { get; set; }
-        
-        public string User { get; set; }
-        
-        public string Email { get; set; }
-        
-        public string Password { get; set; }
-        
-        public List<ClientAddress> Address { get; set; }
-        
-        public List<ClientPhones> Phone { get; set; }
+        public int Cedula { get; set; }
+        public string Nombre { get; set; }
+        public string Usuario { get; set; }
+        public string CPassword { get; set; }
+        public string Correo { get; set; }
+        public int Puntos { get; set; }
+        public int PuntosRedimidos { get; set; }
 
-    }
-    /*
-     * Clase Client Address
-     * Estructura de la relacion entre direccion y cliente
-     */
-    public class ClientAddress
-    {
-        /*
-         * ClientId: Número de cédula del cliente
-        •	Province: Provincia de la dirección del cliente
-        •	Canton: Cantón de la dirección del cliente
-        •	District: Distrito de la dirección del cliente
-        •	Nstreet: Número de calle de la dirección del cliente
+        public List<string> Cita { get; set; }
 
-         */
-        public string ClientId { get; set; }
-        public string Nstreet { get; set; }
-        public string Province { get; set; }
-        public string District { get; set; }
-        public string Canton { get; set; }
+        public List<string> DirClientes { get; set; }
 
-    }
-    /*
-     * Clase ClientPhones
-     * Estructura de la relacion entre cliente y telefono
-     */
-    public class ClientPhones
-    {
-        /*
-         * •	ClientId: Número de cédula del cliente
-•	            Phone: Teléfono del cliente
-         */
-        public string ClientId { get; set; }
-
-        public string Phone { get; set; }
+        public List<string> TelClientes { get; set; }
     }
 }

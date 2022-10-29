@@ -12,6 +12,21 @@ namespace MobileTallerTEC.Services
     {
         Task AddAppointmentAsync(Appointment appointment);
         Task AddClientAsync(Client client);
+        
+        Task AddClienteAsync(Cliente cliente);
+        Task<List<Cliente>> GetClientesAsync();
+
+        Task AddTrabajadorAsync(Trabajador trabajador);
+        Task<List<Trabajador>> GetTrabajadoresAsync();
+
+        Task AddSucursalAsync(Sucursal sucursal);
+        Task<List<Sucursal>> GetSucursalesAsync();
+
+        Task AddLavadoAsync(Lavado lavado);
+        Task<List<Lavado>> GetLavadosAsync();
+
+        Task AddCitaAsync(Citum citum);
+        Task<List<Citum>> GetCitasAsync();
 
         Task<Client> GetClientAsync(string user);
 

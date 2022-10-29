@@ -4,12 +4,14 @@
 -->
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileTallerTEC.Views.Registration"             
+             x:Class="MobileTallerTEC.Views.Registration"    
+             xmlns:local="clr-namespace:MobileTallerTEC.ViewModels"
+             xmlns:model="clr-namespace:MobileTallerTEC.Models"
              Title="{Binding Title}">
     <!--
        Instanciacion del contenido del content page y sus objetos asociados
 -->
-    <ContentPage.Content>
+    <RefreshView x:DataType="local:RegistrationViewModel" Command="{Binding LoadBillsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <StackLayout>
             <!--
                 Label y Entry de la placa 
@@ -24,37 +26,19 @@
             <Picker x:Name="picker"
                 Title="Seleccione una sucursal"
                 TitleColor="Black"
-                SelectedItem="{Binding Office, Mode=TwoWay}">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Sucursal Cartago Centro</x:String>
-                        <x:String>Oreamuno de Cartago</x:String>
-                        <x:String>Pinares Curridabat</x:String>
-                        <x:String>Rio Oro Santa Ana</x:String>
-                        <x:String>Ciudad de Panamá</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                SelectedItem="{Binding Office, Mode=TwoWay}"
+                ItemsSource ="{Binding Offices}"
+                ItemDisplayBinding="{Binding Nombre}"/>
             <!--
                 Label y Picker del servicio 
             -->
-            <Label Text="Servicio" FontSize="Medium" />
+            <Label Text="Tipo de lavado" FontSize="Medium" />
             <Picker x:Name="picker2"
-                Title="Seleccione un Servicio"
+                Title="Seleccione un tipo de lavado"
                 TitleColor="Black"
-                SelectedItem="{Binding Service, Mode=TwoWay}">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Cambio de aceite</x:String>
-                        <x:String>Cambio de llantas</x:String>
-                        <x:String>Alineado y tramado</x:String>
-                        <x:String>Revision 5k km</x:String>
-                        <x:String>Revision 10k km</x:String>
-                        <x:String>Revision 15k km</x:String>
-                        <x:String>Revision 20k km</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                SelectedItem="{Binding Service, Mode=TwoWay}"
+                ItemsSource ="{Binding Services}"
+                ItemDisplayBinding="{Binding TipoLavado}"/>
             <!--
                 Label y DatePicker de la fecha 
             -->
@@ -68,5 +52,5 @@
             </StackLayout>
             <Label Text="{Binding Error, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="Center"/>
         </StackLayout>
-    </ContentPage.Content>
+    </RefreshView>
 </ContentPage>

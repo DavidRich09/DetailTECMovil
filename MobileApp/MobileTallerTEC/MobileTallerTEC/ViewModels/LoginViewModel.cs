@@ -3,6 +3,7 @@ using MobileTallerTEC.Services;
 using MobileTallerTEC.Views;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using Xamarin.Forms;
 
@@ -48,11 +49,21 @@ namespace MobileTallerTEC.ViewModels
         {
             try
             {
-                Client client = await _service.GetClientAsync(User);
+                //Client client = await _service.GetClientAsync(User);
+                await App.DataBase.syncronizeDataBase(_service);
+                List<Cliente> clientes = await App.DataBase.GetClientesAsync();
+                Console.WriteLine(clientes.Count);
+                Cliente client = new Cliente();
                 Error = "";
-                if (client.Password == password)
+                foreach (Cliente _cliente in clientes)
                 {
-                    UserSingleton.GetInstance().Id =client.Id;
+                    if (_cliente.Cedula  == int.Parse(user))
+                        client = _cliente;
+                }
+               
+                if (client.CPassword == password)
+                {
+                    UserSingleton.GetInstance().Id = client.Cedula;
                     await Shell.Current.GoToAsync($"//{nameof(Registration)}");
                 }
                 else

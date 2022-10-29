@@ -1,7 +1,11 @@
 ﻿using MobileTallerTEC.Models;
 using MobileTallerTEC.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.Metrics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -23,15 +27,19 @@ namespace MobileTallerTEC.ViewModels
         //String asociado a la placa de la cita
         private string license_plate;
         //String asociado a la sucursal de la cita
-        private string office;
+        private Sucursal office;
         //String asociado al servicio de la cita
-        private string service;
+        private Lavado service;
         //String asociado a la fecha de la cita
         private string date;
         //String asociado a la fecha de hoy
         private string today;
         //String asociado al error/succses de un registro
         private string error;
+        private IList<Sucursal> offices;
+        private IList<Lavado> services;
+
+        public Command LoadBillsCommand { get; }
 
         /*
          * Inicializador de la clase, asignacion de valores iniciales
@@ -40,6 +48,7 @@ namespace MobileTallerTEC.ViewModels
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
+            LoadBillsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             _service = service;
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
@@ -49,14 +58,43 @@ namespace MobileTallerTEC.ViewModels
             Error = "";
         }
         /*
+         * Funcion que ejecuta un cargado de las facturas de un cliente
+         * Se realiza un get utilizando el id del cliente para retornar las facturas
+         * Estas facturas se cargan a la lista observable
+         */
+        async Task ExecuteLoadItemsCommand()
+        {
+            IsBusy = true;
+
+            try
+            {
+                await App.DataBase.syncronizeDataBase(_service);
+                Offices = await App.DataBase.GetSucursalesAsync();
+                Services = await App.DataBase.GetLavadosAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            //SelectedBill = null;
+        }
+        /*
          * Funcion que valida si los espacios no estan vacios y cumplen con las restricciones para el registro
          */
         private bool ValidateSave()
         {
             bool valid = false;
             if (!String.IsNullOrWhiteSpace(license_plate) && license_plate.Length == 7
-                && !String.IsNullOrWhiteSpace(office)
-                && !String.IsNullOrWhiteSpace(service)
+                && office != null
+                && service != null
                 && !String.IsNullOrWhiteSpace(date))
             {
                 valid = true;
@@ -73,6 +111,18 @@ namespace MobileTallerTEC.ViewModels
             set => SetProperty(ref today, value);
 
         }
+        public IList<Sucursal> Offices
+        {
+            get => offices;
+            set => SetProperty(ref offices, value);
+
+        }
+        public IList<Lavado> Services
+        {
+            get => services;
+            set => SetProperty(ref services, value);
+
+        }
         public string Client
         {
             get => client;
@@ -84,12 +134,12 @@ namespace MobileTallerTEC.ViewModels
             get => license_plate;
             set => SetProperty(ref license_plate, value);
         }
-        public string Office
+        public Sucursal Office
         {
             get => office;
             set => SetProperty(ref office, value);
         }
-        public string Service
+        public Lavado Service
         {
             get => service;
             set => SetProperty(ref service, value);
@@ -122,27 +172,27 @@ namespace MobileTallerTEC.ViewModels
          */
         private async void OnSave()
         {
-            List<Replacements> Replacements = new List<Replacements>();
             try
             {
-                Worker Responsible = await _service.GetWorkerRAsync();
-                Worker Assistant = await _service.GetWorkerRAsync();
-                var appointment = new Appointment
+                Trabajador Responsible = await App.DataBase.GetTrabajadorRAsync();
+                Console.WriteLine(Responsible);
+                var appointment = new Citum
                 {
-                    responsible = Responsible.idNumber.ToString(),
-                    assistant = Assistant.idNumber.ToString(),
-                    licensePlate = License_plate,
-                    service = Service,
-                    client = UserSingleton.GetInstance().Id,
-                    office = Office,
-                    date = Date.Substring(3, 2)+"-"+Date.Substring(0,2)+"-"+Date.Substring(6, 4),
-                    replacements = Replacements
+                    CedEmpleado = Responsible.Cedula,
+                    PlacaVehiculo = License_plate,
+                    TipoLavado = Service.TipoLavado,
+                    CedCliente = UserSingleton.GetInstance().Id,
+                    Sucursal = Office.Nombre,
+                    Fecha = Convert.ToDateTime(Date),
                 };
 
-                await _service.AddAppointmentAsync(appointment);
-
+                //await _service.AddAppointmentAsync(appointment);
+                await App.DataBase.SaveCitumAsync(appointment);
+                await App.DataBase.syncronizeDataBase(_service);
                 await Shell.Current.GoToAsync("..");
                 Error = "Cita registrada correctamente";
+
+                Console.WriteLine(JsonConvert.SerializeObject(appointment, Formatting.Indented));
             }
             catch (Exception ex)
             {

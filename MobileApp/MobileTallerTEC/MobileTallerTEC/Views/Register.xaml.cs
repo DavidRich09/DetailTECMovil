@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Xamarin.Essentials.Permissions;
 
 namespace MobileTallerTEC.Views
 {
@@ -17,13 +18,21 @@ namespace MobileTallerTEC.Views
      */
     public partial class Register : ContentPage
     {
+        RegisterViewModel _viewModel;
         /*
          * Inicializador de la clase
          */
         public Register()
         {
             InitializeComponent();
-            BindingContext = Startup.Resolve<RegisterViewModel>();
+            InitializeControls();
+            BindingContext = _viewModel = Startup.Resolve<RegisterViewModel>();
         }
+        public void InitializeControls()
+        {
+            Phones.Completed += (sender, e) => _viewModel.SavePhone(sender, e);
+            Addresses.Completed += (sender, e) => _viewModel.SaveAddress(sender, e);
+        }
+
     }
 }

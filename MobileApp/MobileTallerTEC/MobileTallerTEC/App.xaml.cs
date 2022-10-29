@@ -3,6 +3,9 @@ using MobileTallerTEC.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MobileTallerTEC.DataBase;
+using System.IO;
+using MobileTallerTEC.Models;
 
 namespace MobileTallerTEC
 {
@@ -12,12 +15,27 @@ namespace MobileTallerTEC
      */
     public partial class App : Application
     {
+        private static Database dataBase;
+        public static Database DataBase
+        {
+            get
+            {
+                if (dataBase == null)
+                {
+                    dataBase = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbLite16.db3"));
+
+                }
+                return dataBase;
+            }
+        }
         /*
          * Inicializador de la clase
          */
         public App()
         {
             InitializeComponent();
+
+
             Startup.ConfigureServices();
 
             MainPage = new AppShell();

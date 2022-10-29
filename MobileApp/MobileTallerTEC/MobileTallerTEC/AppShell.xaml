@@ -75,6 +75,7 @@
     <!-- 
        Instanciacion de los elementos flotantes
     -->
+    
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
@@ -83,10 +84,10 @@
         <ShellContent Route="Registration" ContentTemplate="{DataTemplate local:Registration}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Facturacion" Icon="icon_bill.png">
-        <ShellContent Route="Billing" ContentTemplate="{DataTemplate local:Billing}" />
+    <FlyoutItem Title="Puntos" Icon="icon_bill.png">
+        <ShellContent Route="Points" ContentTemplate="{DataTemplate local:Points}" />
     </FlyoutItem>
-   
+ 
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>
 

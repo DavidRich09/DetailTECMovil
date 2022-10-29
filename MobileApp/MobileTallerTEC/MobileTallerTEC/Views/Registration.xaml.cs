@@ -16,7 +16,10 @@ namespace MobileTallerTEC.Views
      * Clase asociada al Registration.xaml 
      */
     public partial class Registration : ContentPage
+
     {
+        //Instanciacion del viewModel para realizar el refreshing
+        RegistrationViewModel _viewModel;
         /*
          * Inicializador de la clase
          */
@@ -24,7 +27,12 @@ namespace MobileTallerTEC.Views
         {
             InitializeComponent();
 
-            BindingContext = Startup.Resolve<RegistrationViewModel>();
+            BindingContext = _viewModel = Startup.Resolve<RegistrationViewModel>();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
         }
     }
 }
