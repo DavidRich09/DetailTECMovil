@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace MobileTallerTEC.Models { 
+namespace MobileTallerTEC.Models {
+    /*
+ * Clase del modelo de la tabla DirCliente
+ */
     public partial class DirCliente
     {
         public string Direccion { get; set; } = null!;

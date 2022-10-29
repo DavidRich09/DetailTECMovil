@@ -28,9 +28,11 @@ namespace MobileTallerTEC.ViewModels
 
         //Comando para cargar las facturas de un cliente
         public Command LoadBillsCommand { get; }
-
+        //Cantidad de puntos totales
         private string cantPoints;
+        //Cantidad de puntos redimidos
         private string cantPointsRed;
+        //Cantidad de puntos sobrantes
         private string cantPointsAviable;
 
         /*

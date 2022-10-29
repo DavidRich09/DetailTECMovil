@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace MobileTallerTEC.Models
 {
+    /*
+ * Clase del modelo de la tabla Trabajador
+ */
     public partial class Trabajador
     {
         [PrimaryKey]

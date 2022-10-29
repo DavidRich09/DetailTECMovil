@@ -5,6 +5,10 @@ using Xamarin.Forms;
 
 namespace MobileTallerTEC.Behaviors
 {
+    /*
+     * Clase MaskedBeheavior
+     * Tiene metodos que otorgan un comportamiento determinado a los entries en la app
+     */ 
     public class MaskedBehavior : Behavior<Entry>
     {
         private string _mask = "";

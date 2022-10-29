@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace MobileTallerTEC.Models
 {
+    /*
+ * Clase del modelo de la tabla Cliente
+ */
     public partial class Cliente
     {
 

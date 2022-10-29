@@ -15,6 +15,9 @@ namespace MobileTallerTEC
      */
     public partial class App : Application
     {
+        /*
+         * Inicializacion de la base de datos lite
+         */
         private static Database dataBase;
         public static Database DataBase
         {

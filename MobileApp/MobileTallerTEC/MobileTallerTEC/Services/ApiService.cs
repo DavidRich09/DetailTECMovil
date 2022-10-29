@@ -25,12 +25,20 @@ namespace MobileTallerTEC.Services
         {
             _httpClient = httpClient;
         }
+        /*
+         * Funcion que anade una nueva cliente realizando un POST en la api
+         * Parametros: cliente: cliente a registrar
+         */
         public async Task AddClienteAsync(Cliente cliente)
         {
             var response = await _httpClient.PostAsync("Cliente/saveClient",
                 new StringContent(JsonConvert.SerializeObject(cliente, Formatting.Indented), Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
         }
+        /*
+         * Funcion que solicita los clientes realizando un GET en la api
+         * Retorna: Lista de clientes
+         */
         public async Task<List<Cliente>> GetClientesAsync()
         {
             var response = await _httpClient.GetAsync($"Cliente/getAllClients/");
@@ -39,7 +47,10 @@ namespace MobileTallerTEC.Services
             var a = JsonConvert.DeserializeObject<string>(responseAsString);
             return JsonConvert.DeserializeObject<List<Cliente>>(a);
         }
-
+        /*
+         * Funcion que anade una nueva trabajador realizando un POST en la api
+         * Parametros: trabajador: trabajador a registrar
+         */
         public async Task AddTrabajadorAsync(Trabajador trabajador)
         {
             _httpClient.Timeout = TimeSpan.FromSeconds(10);
@@ -47,6 +58,10 @@ namespace MobileTallerTEC.Services
                 new StringContent(JsonConvert.SerializeObject(trabajador, Formatting.Indented), Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
         }
+        /*
+         * Funcion que solicita los trbaajadores realizando un GET en la api
+         * Retorna: Lista de trabajadores
+         */
         public async Task<List<Trabajador>> GetTrabajadoresAsync()
         {
             var response = await _httpClient.GetAsync($"Trabajadors/getAllWorkers/");
@@ -55,7 +70,10 @@ namespace MobileTallerTEC.Services
             var a = JsonConvert.DeserializeObject<string>(responseAsString);
             return JsonConvert.DeserializeObject<List<Trabajador>>(a);
         }
-
+        /*
+         * Funcion que anade una nueva sucursal realizando un POST en la api
+         * Parametros: sucursal: sucursal a registrar
+         */
         public async Task AddSucursalAsync(Sucursal sucursal)
         {
             _httpClient.Timeout = TimeSpan.FromSeconds(10);
@@ -63,6 +81,10 @@ namespace MobileTallerTEC.Services
                 new StringContent(JsonConvert.SerializeObject(sucursal, Formatting.Indented), Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
         }
+        /*
+         * Funcion que solicita los sucursales realizando un GET en la api
+         * Retorna: Lista de sucursales
+         */
         public async Task<List<Sucursal>> GetSucursalesAsync()
         {
             var response = await _httpClient.GetAsync($"Sucursal/getAllOffices/");
@@ -71,7 +93,10 @@ namespace MobileTallerTEC.Services
             var a = JsonConvert.DeserializeObject<string>(responseAsString);
             return JsonConvert.DeserializeObject<List<Sucursal>>(a);
         }
-
+        /*
+         * Funcion que anade una nueva lvado realizando un POST en la api
+         * Parametros: lavado: lavado a registrar
+         */
         public async Task AddLavadoAsync(Lavado lavado)
         {
             _httpClient.Timeout = TimeSpan.FromSeconds(10);
@@ -79,6 +104,10 @@ namespace MobileTallerTEC.Services
                 new StringContent(JsonConvert.SerializeObject(lavado, Formatting.Indented), Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
         }
+        /*
+         * Funcion que solicita los lavados realizando un GET en la api
+         * Retorna: Lista de lavados
+         */
         public async Task<List<Lavado>> GetLavadosAsync()
         {
             var response = await _httpClient.GetAsync($"Wash/getAllWashes/");
@@ -87,13 +116,20 @@ namespace MobileTallerTEC.Services
             var a = JsonConvert.DeserializeObject<string>(responseAsString);
             return JsonConvert.DeserializeObject<List<Lavado>>(a);
         }
-
+        /*
+         * Funcion que anade una nueva cita realizando un POST en la api
+         * Parametros: citum: cita a registrar
+         */
         public async Task AddCitaAsync(Citum citum)
         {
             var response = await _httpClient.PostAsync("CitumContoller/saveAppointment",
                 new StringContent(JsonConvert.SerializeObject(citum, Formatting.Indented), Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
         }
+        /*
+         * Funcion que solicita los citas realizando un GET en la api
+         * Retorna: Lista de citas
+         */
         public async Task<List<Citum>> GetCitasAsync()
         {
             var response = await _httpClient.GetAsync($"CitumContoller/getAllAppointments/");

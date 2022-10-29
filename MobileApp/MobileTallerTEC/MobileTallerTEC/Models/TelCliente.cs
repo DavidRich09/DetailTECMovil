@@ -5,6 +5,9 @@ using System.Xml;
 
 namespace MobileTallerTEC.Models
 {
+    /*
+     * Clase del modelo de la tabla TelCliente
+     */
     public partial class TelCliente
     {
         [Indexed(Name = "CompositeKey", Order = 1, Unique = true)]

@@ -10,6 +10,9 @@ namespace MobileTallerTEC.DataBase
 {
     public class Database
     {
+        /*
+         * Creacion de la base de datos y sus respectivas tablas 
+         */
         private readonly SQLiteAsyncConnection _database;
         public Database(string dbPath) 
         { 
@@ -22,6 +25,9 @@ namespace MobileTallerTEC.DataBase
             _database.CreateTableAsync<Lavado>().Wait();
             _database.CreateTableAsync<Citum>().Wait();
         }
+        /*
+         * Gets y add a las tablas de la DB SQLite
+         */ 
         public Task<List<Cliente>> GetClientesAsync()
         {
             return _database.Table<Cliente>().ToListAsync();
@@ -98,7 +104,10 @@ namespace MobileTallerTEC.DataBase
         {
             return _database.Table<Lavado>().ToListAsync();
         }
-
+        /*
+         * Metodo de sincornizacion entre las bases de datos SQL Server y SQLite
+         * Parametros: _service: servicio con el cual se conectara a la api
+         */
         public async Task syncronizeDataBase(IService _service)
         {
             int timeout = 1000;

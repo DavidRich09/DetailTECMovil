@@ -36,7 +36,9 @@ namespace MobileTallerTEC.ViewModels
         private string today;
         //String asociado al error/succses de un registro
         private string error;
+        //Lista de sucursales para el picker
         private IList<Sucursal> offices;
+        //Lista de lavados para el picker
         private IList<Lavado> services;
 
         public Command LoadBillsCommand { get; }
@@ -58,9 +60,7 @@ namespace MobileTallerTEC.ViewModels
             Error = "";
         }
         /*
-         * Funcion que ejecuta un cargado de las facturas de un cliente
-         * Se realiza un get utilizando el id del cliente para retornar las facturas
-         * Estas facturas se cargan a la lista observable
+         * Funcion que ejecuta un cargado de los tipos de lavado y sucursales guardadas en la base de datos
          */
         async Task ExecuteLoadItemsCommand()
         {

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace MobileTallerTEC.Models
 {
+    /*
+ * Clase del modelo de la tabla Citum
+ */
     public partial class Citum
     {
         [Indexed(Name = "CompositeKey", Order = 1, Unique = true)]
